@@ -32,7 +32,7 @@ int main()
     };
 
     sf::RenderWindow window(
-        sf::VideoMode(1920, 1080),
+        sf::VideoMode(160, 280),
         "Borderless Window",
         sf::Style::None
     );
@@ -44,15 +44,28 @@ int main()
         | WS_EX_LAYERED
         | WS_EX_TRANSPARENT);
 
-    SetWindowPos(hwndOver, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+    SetWindowPos(hwndOver, HWND_TOPMOST, 70, 545, 160, 280, SWP_NOSIZE);
     SetLayeredWindowAttributes(hwndOver, RGB(0, 0, 0), 0, LWA_COLORKEY);
     SetForegroundWindow(hwnd);
 
     sf::Font font;
     font.loadFromFile("arial.ttf");
 
+    int radius1 = 28.0;
+    sf::CircleShape circle1(radius1);
+    int radius2 = 26.0;
+    sf::CircleShape circle2(radius2);
+    sf::Color type;
+    circle2.setFillColor(sf::Color::Black);
+
+    sf::Text text;
+    text.setFont(font);
+    text.setCharacterSize(18);
+    text.setFillColor(sf::Color::White);
+
     while (window.isOpen()) {
         window.clear();
+
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
@@ -61,7 +74,7 @@ int main()
         }
 
         for (int i = 0; i < 4; i++) {
-            sf::Color type;
+            
             if (watchers[i].hookStates == 0) {
                 type = sf::Color::Green;
             }
@@ -72,32 +85,19 @@ int main()
                 type = sf::Color::Red;
             }
 
-            int radius1 = 28;
-            sf::CircleShape circle1(radius1);
-            circle1.setPosition(watchers[i].position.x + 21 - radius1, watchers[i].position.y + 20 - radius1);
+            circle1.setPosition(watchers[i].position.x + 21 - radius1 - 70, watchers[i].position.y + 20 - radius1 - 545);
+            circle2.setPosition(watchers[i].position.x + 21 - radius2 - 70, watchers[i].position.y + 20 - radius2 - 545);
             circle1.setFillColor(type);
             window.draw(circle1);
-
-
-            int radius2 = 26;
-            sf::CircleShape circle2(radius2);
-            circle2.setPosition(watchers[i].position.x + 21 - radius2, watchers[i].position.y + 20 - radius2);
-            circle2.setFillColor(sf::Color::Black);
             window.draw(circle2);
-        }
-
-
-        for (int i = 0; i < 4; i++) {
-            sf::Text text;
-            text.setFont(font);
+            
             text.setString(to_string(watchers[i].get_time()));
-            text.setCharacterSize(18);
-            text.setFillColor(sf::Color::White);
-            text.setPosition(watchers[i].position.x + 130, watchers[i].position.y);
+            text.setPosition(watchers[i].position.x + 54, watchers[i].position.y - 550);
             window.draw(text);
         }
 
-        window.display(); 
+        window.display();
+        Sleep(900);
     }
     return 0;
 }
