@@ -1,16 +1,18 @@
 ﻿  DSTracker.cpp
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(54,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(55,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(56,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(57,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(88,115): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(88,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(89,115): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(89,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(95,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(95,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(59,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(60,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(61,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(62,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(105,119): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(105,75): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(106,119): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(106,75): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(112,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(112,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(74,28): warning C4101: 'ssim_score_escape': unreferenced local variable
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(74,12): warning C4101: 'ssim_score_gen': unreferenced local variable
   Generating code
-  0 of 240 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  1 of 165 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
