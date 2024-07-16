@@ -152,6 +152,8 @@
     <ClInclude Include="watcher.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="cage.png" />
+    <Image Include="details.png" />
     <Image Include="hook.png" />
   </ItemGroup>
   <ItemGroup>

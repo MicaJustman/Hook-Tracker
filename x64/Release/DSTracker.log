@@ -1,19 +1,13 @@
-﻿  DSTracker.cpp
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(59,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(60,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(61,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(62,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(105,119): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(105,75): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(106,119): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(106,75): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(112,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(112,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(74,28): warning C4101: 'ssim_score_escape': unreferenced local variable
-C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(74,12): warning C4101: 'ssim_score_gen': unreferenced local variable
+﻿  watcher.cpp
+C:\Users\micar\source\repos\DSTracker\watcher.cpp(9,99): warning C4244: '=': conversion from '_Rep' to 'int', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+C:\Users\micar\source\repos\DSTracker\watcher.cpp(10,9): warning C4804: '>': unsafe use of type 'bool' in operation
   Generating code
-  1 of 165 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+  1 of 209 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   DSTracker.vcxproj -> C:\Users\micar\source\repos\DSTracker\x64\Release\DSTracker.exe

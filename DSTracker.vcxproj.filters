@@ -37,6 +37,12 @@
     <Image Include="hook.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="details.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="cage.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="arial.ttf">

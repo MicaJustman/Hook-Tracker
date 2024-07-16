@@ -4,13 +4,24 @@
 #include <Windows.h>
 #include "watcher.h"
 #include "grab_screen.h"
+#include <filesystem>
 
 
 using namespace std;
 using namespace cv;
 
+//int fileCount = 0;
+
 int main()
 {
+    /*
+    for (const auto& entry : filesystem::directory_iterator("training")) {
+        if (entry.is_regular_file()) {
+            fileCount++;
+        }
+    }
+    */
+
     HWND hwnd = GetDesktopWindow();
     LPCWSTR windowTitle = L"DeadByDaylight  ";
 
@@ -21,6 +32,7 @@ int main()
 
     int split = 70;
     Mat hook_template = imread("hook.png", IMREAD_GRAYSCALE);
+    Mat cage_template = imread("cage.png", IMREAD_GRAYSCALE);
     Mat details_template = imread("details.png");
     cvtColor(details_template, details_template, COLOR_RGB2GRAY);
 
@@ -30,10 +42,10 @@ int main()
     }
 
     Watcher watchers[4] = {
-        Watcher(positions[0], hook_template, hwnd),
-        Watcher(positions[1], hook_template, hwnd),
-        Watcher(positions[2], hook_template, hwnd),
-        Watcher(positions[3], hook_template, hwnd)
+        Watcher(positions[0], hook_template, cage_template, hwnd),
+        Watcher(positions[1], hook_template, cage_template,hwnd),
+        Watcher(positions[2], hook_template, cage_template,hwnd),
+        Watcher(positions[3], hook_template, cage_template,hwnd)
     };
 
     sf::RenderWindow window(
@@ -56,9 +68,9 @@ int main()
     sf::Font font;
     font.loadFromFile("arial.ttf");
 
-    int radius1 = 28.0;
+    float radius1 = 28.0;
     sf::CircleShape circle1(radius1);
-    int radius2 = 26.0;
+    float radius2 = 26.0;
     sf::CircleShape circle2(radius2);
     sf::Color type;
     circle2.setFillColor(sf::Color::Black);
@@ -71,7 +83,7 @@ int main()
     sf::Event event;
 
     Mat current;
-    double ssim_score_gen, ssim_score_escape, ssim_score;
+    double ssim_score;
 
     while (window.isOpen()) {
         window.clear();
@@ -86,10 +98,12 @@ int main()
         cvtColor(current, current, COLOR_RGB2GRAY);
         ssim_score = templateMatch(current, details_template);
        
-        if (ssim_score < .8 and GetForegroundWindow() == FindWindow(NULL, windowTitle)) {
+        if (ssim_score < .8 /*and GetForegroundWindow() == FindWindow(NULL, windowTitle)*/) {
             for (int i = 0; i < 4; i++) {
                 watchers[i].run();
             }
+
+            cout << endl;
 
             for (int i = 0; i < 4; i++) {
                 if (watchers[i].hookStates == 0) {

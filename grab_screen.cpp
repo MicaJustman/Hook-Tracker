@@ -5,6 +5,7 @@ using namespace std;
 
 double minVal; double maxVal; Point minLoc; Point maxLoc;
 Mat result;
+double maxHook;
 
 Mat getMat(HWND hwnd, int width, int height, int offset_width, int offset_height) {
 	HDC deviceContext = GetDC(hwnd);
@@ -22,8 +23,7 @@ Mat getMat(HWND hwnd, int width, int height, int offset_width, int offset_height
 	bi.biSizeImage = 0;
 	bi.biXPelsPerMeter = 1;
 	bi.biYPelsPerMeter = 2;
-	bi.biClrUsed = 3;
-	bi.biClrUsed = 4;
+	bi.biClrUsed = 0;
 
 	Mat mat = Mat(height, width, CV_8UC4);
 	GetDIBits(memoryDeviceContext, bitmap, 0, height, mat.data, (BITMAPINFO*)&bi, DIB_RGB_COLORS);
