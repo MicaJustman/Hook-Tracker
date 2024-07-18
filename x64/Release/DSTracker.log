@@ -1,13 +1,13 @@
-﻿  watcher.cpp
-C:\Users\micar\source\repos\DSTracker\watcher.cpp(9,99): warning C4244: '=': conversion from '_Rep' to 'int', possible loss of data
+﻿  DSTracker.cpp
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(128,81): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\micar\source\repos\DSTracker\DSTracker.cpp(128,54): warning C4244: 'argument': conversion from 'const _Tp' to 'float', possible loss of data
           with
           [
-              _Rep=__int64
+              _Tp=int
           ]
-C:\Users\micar\source\repos\DSTracker\watcher.cpp(10,9): warning C4804: '>': unsafe use of type 'bool' in operation
   Generating code
-  1 of 209 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+  4 of 209 functions ( 1.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    8 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   DSTracker.vcxproj -> C:\Users\micar\source\repos\DSTracker\x64\Release\DSTracker.exe

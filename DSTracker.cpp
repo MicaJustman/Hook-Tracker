@@ -32,7 +32,9 @@ int main()
 
     int split = 70;
     Mat hook_template = imread("hook.png", IMREAD_GRAYSCALE);
+    threshold(hook_template, hook_template, 130, 255, THRESH_BINARY);
     Mat cage_template = imread("cage.png", IMREAD_GRAYSCALE);
+    threshold(cage_template, cage_template, 130, 255, THRESH_BINARY);
     Mat details_template = imread("details.png");
     cvtColor(details_template, details_template, COLOR_RGB2GRAY);
 
@@ -86,6 +88,8 @@ int main()
     double ssim_score;
 
     while (window.isOpen()) {
+        chrono::steady_clock::time_point start = chrono::steady_clock::now();
+
         window.clear();
 
         while (window.pollEvent(event)) {
@@ -103,8 +107,6 @@ int main()
                 watchers[i].run();
             }
 
-            cout << endl;
-
             for (int i = 0; i < 4; i++) {
                 if (watchers[i].hookStates == 0) {
                     type = sf::Color::Green;
@@ -113,7 +115,7 @@ int main()
                     type = sf::Color::Blue;
                 }
                 else {
-                    type = sf::Color::Red;
+                    type = sf::Color::Magenta;
                 }
 
                 circle1.setPosition(watchers[i].position.x + 21 - radius1 - 70, watchers[i].position.y + 20 - radius1 - 545);
@@ -123,13 +125,13 @@ int main()
                 window.draw(circle2);
 
                 text.setString(to_string(watchers[i].get_time()));
-                text.setPosition(watchers[i].position.x + 54, watchers[i].position.y - 550);
+                text.setPosition(watchers[i].position.x, watchers[i].position.y - 553);
                 window.draw(text);
             } 
         }
         
         window.display();
-        Sleep(200);
+        //cout << chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - start).count() << endl;
     }
 
     return 0;

@@ -13,6 +13,7 @@ class Watcher {
         Mat hook_template;
         Mat cage_template;
         Mat current;
+        Mat stored;
         HWND hwnd;
         double ssim_score = 0.0;
         double ssim_test = 0.0;
