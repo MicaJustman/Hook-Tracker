@@ -9,14 +9,15 @@ using namespace cv;
 class Watcher {
     public:
         bool countdown = false;
+        bool caged = false;
         const Point position;
         Mat hook_template;
         Mat cage_template;
+        Mat skull_template;
         Mat current;
         Mat stored;
         HWND hwnd;
         double ssim_score = 0.0;
-        double ssim_test = 0.0;
         chrono::steady_clock::time_point DSTimer = chrono::steady_clock::now() - chrono::minutes(5);
         chrono::steady_clock::time_point flashTimer = chrono::steady_clock::now() - chrono::minutes(5);
         chrono::steady_clock::time_point startTime = chrono::steady_clock::now();
@@ -25,13 +26,15 @@ class Watcher {
         int hookStates = 0;
         //int lastSave = 0;
 
-        Watcher(Point position, cv::Mat hook_template, cv::Mat cage_template, HWND hwnd)
+        Watcher(Point position, Mat hook_template, Mat cage_template, Mat skull_template, HWND hwnd)
             : position(position),
             hook_template(hook_template),
             cage_template(cage_template),
+            skull_template(skull_template),
             hwnd(hwnd)
         {}
 
         int get_time();
         void run(); 
+        void reset();
 };

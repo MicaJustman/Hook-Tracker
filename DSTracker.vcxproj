@@ -153,8 +153,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="cage.png" />
-    <Image Include="details.png" />
     <Image Include="hook.png" />
+    <Image Include="skull.png" />
+    <Image Include="start.png" />
+    <Image Include="stop.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="arial.ttf" />

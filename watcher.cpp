@@ -15,12 +15,12 @@ int Watcher::get_time() {
 	}
 }
 
-void Watcher::run() {
-	if (GetAsyncKeyState('P') & 0x8000) {
-		hookStates = 0;
-		DSTimer -= chrono::minutes(5);
-	}
+void Watcher::reset() {
+	hookStates = 0;
+	DSTimer -= chrono::minutes(5);
+}
 
+void Watcher::run() {
 	/*temp to grab faces
 	int seconds = chrono::duration_cast<std::chrono::seconds>(chrono::steady_clock::now() - startTime).count();
 	cout << seconds << endl;
@@ -32,45 +32,68 @@ void Watcher::run() {
 	*/
 
 	current = getMat(hwnd, 40, 40, position.x, position.y);
-	stored = current;
 	cvtColor(current, current, COLOR_BGR2GRAY);
 	threshold(current, current, 130, 255, THRESH_BINARY);
 
 	ssim_score = templateMatch(current, hook_template);
 
-	if (ssim_score < .45) {
+	if (ssim_score < .5) {
 		ssim_score = templateMatch(current, cage_template);
+
+		if (ssim_score >= .5) {
+			caged = true;
+		}
 	}
 
-	if (ssim_score >= 0.45) {
+	if (ssim_score >= 0.5) {
 		if (chrono::steady_clock::now() - flashTimer > chrono::seconds(5)) {
+			stored = getMat(hwnd, 80, 9, position.x + 64, position.y + 29);
 			uchar* framedata = stored.data;
+
 			int reds = 0;
 
 			for (int row = 0; row < stored.rows; ++row) {
-				for (int col = 0; col < stored.cols; ++col) {
-					if (framedata[(row * stored.cols + col) * 4] < 30 and framedata[(row * stored.cols + col) * 4 + 1] < 30 and framedata[(row * stored.cols + col) * 4 + 2] > 150) {
-						reds++;
+				if (row < 2 or row >= stored.rows - 2) {
+					for (int col = 0; col < stored.cols; ++col) {
+						if (framedata[(row * stored.cols + col) * 4] < 35 and framedata[(row * stored.cols + col) * 4 + 1] < 35 and framedata[(row * stored.cols + col) * 4 + 2] > 150) {
+							reds = -10000;
+						}
 					}
 				}
+				else {
+					for (int col = 0; col < stored.cols; ++col) {
+						if (framedata[(row * stored.cols + col) * 4] < 35 and framedata[(row * stored.cols + col) * 4 + 1] < 35 and framedata[(row * stored.cols + col) * 4 + 2] > 150) {
+							reds++;
+						}
+					}
+				}
+				
 			}
 
-			if (reds > 100) {
-				cout << reds << endl;
+			if (reds > 20) {
+				DSTimer -= chrono::minutes(5);
 				flashTimer = chrono::steady_clock::now();
-				imwrite("Snap Shots/" + to_string(position.y) + "_" + to_string(hookStates) + ".png", stored);
+				//imwrite("Snap Shots/" + to_string(position.y) + "_" + to_string(hookStates) + ".png", frame);
 				hookStates += 1;
-				countdown = true;
 			}
 		}
 
+		countdown = true;
 	}
 	else if (ssim_score < 0.3 and countdown) {
-		DSTimer = chrono::steady_clock::now();
 		countdown = false;
+		ssim_score = templateMatch(current, skull_template);
 
-		if (hookStates == 3) {
+		if (caged) {
+			caged = false;
+			hookStates -= 1;
+		}
+
+		if (ssim_score > .6) {
 			DSTimer -= chrono::minutes(5);
+		}
+		else {
+			DSTimer = chrono::steady_clock::now();
 		}
 	}
 }
